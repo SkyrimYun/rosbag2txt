@@ -1,0 +1,13 @@
+<launch>
+
+
+  <node pkg="rosbag" type="play" name="player" args="--pause $(find bag2txt)/data/test_panorama/test_panorama.bag" output="screen"  />
+  <node name="bag2txt" pkg="bag2txt" type="main" output="screen" >
+    <param name="output_path"      value="$(find bag2txt)/data/test_panorama/"/>
+    <remap from="/events" to="/cam0/events"/>
+    <remap from="/imu" to="/imu"/>
+    <remap from="/pose" to="/cam0/pose"/>
+
+  </node>
+
+</launch>
